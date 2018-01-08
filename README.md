@@ -42,7 +42,7 @@ Indent plugin supports both Sublime Text 2 and Sublime Text 3
 
 ## Installation
 
-Just use [Package Control](https://packagecontrol.io/) and search for "LogMaster" plugin
+Use https://codeload.github.com/alarejn/sublimetext_logmaster/zip/master, unzip and rename in LogMaster
 
 ## Usage ##
 
