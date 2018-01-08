@@ -1,4 +1,4 @@
-# SublimeText Indent plugin
+# SublimeText LogMaster plugin
 
 <p>What is the goal of Indent plugin? Short answer is converting this XML</p>
 
@@ -34,7 +34,7 @@
         ]
     }
     
-<p>Want more? It can indent only selected text - including multiple selections and even mixed XML / JSON selections. It is smart enough to recognize XML or JSON even if you are editing plain text. Indent plugin won't mess up your keyboard shortcuts because it uses "chord" command Ctrl+K, Ctrl+F (this mean hold Ctrl, press K then press F, release Ctrl) and also available in "Selection" menu. </p>
+<p>Want more? It can indent only selected text - including multiple selections and even mixed XML / JSON selections. It is smart enough to recognize XML or JSON even if you are editing plain text. Indent plugin won't mess up your keyboard shortcuts because it uses "chord" command Ctrl+alt+s and also available in "Selection" menu. </p>
 
 ## Supported Sublime Text versions
 
@@ -42,7 +42,7 @@ Indent plugin supports both Sublime Text 2 and Sublime Text 3
 
 ## Installation
 
-Just use [Package Control](https://packagecontrol.io/) and search for "indent xml" plugin
+Just use [Package Control](https://packagecontrol.io/) and search for "LogMaster" plugin
 
 ## Usage ##
 
@@ -55,10 +55,6 @@ Currently this plugin performs patching of `xml.dom.minidom.CDataSection` class 
 ## Feedback & Support
 
 Available on [Github](https://github.com/alek-sys/sublimetext_indentxml)
-
-## Contribution
-
-...is always welcome! Same place - [Github](https://github.com/alek-sys/sublimetext_indentxml)
 
 ## License
 
