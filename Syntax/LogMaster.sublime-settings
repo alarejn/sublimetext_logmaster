@@ -1,0 +1,16 @@
+{
+	"color_scheme": "Packages/LogMaster/Syntax/MarianaLog.tmTheme",
+	// "syntax": "Packages/Log4jView/Log4jView.tmLanguage",
+	// "log_file": "Log4.log",
+	"extensions": [
+		"1", "log1",
+		"2", "log2",
+		"3", "log3",
+		"4", "log4",
+		"5", "log5",
+		"6", "log6",
+		"7", "log7",
+		"8", "log8",
+		"logfile"
+	]
+}

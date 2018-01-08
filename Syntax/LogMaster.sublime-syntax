@@ -1,0 +1,171 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+name: LogMaster
+file_extensions:
+  - log
+scope: text.plain
+contexts:
+  main:
+    - match: '^(\d{4}\/\d{2}\/\d{2} \d{2}\:\d{2}\:\d{2}) \- (.*)$'
+      comment: Installer log
+      scope: string.quoted.logMaster
+      captures:
+        1: entity.info.logMaster
+        2: control.logMaster
+    - match: '^([a-zA-Z\s]*)(.*Exception\:)(\s*.*)$'
+      comment: exception jboss
+      scope: string.quoted.logMaster
+      captures:
+        1: control.logMaster
+        2: entity.error.logMaster
+        3: control.logMaster
+    - match: '^(\s*)(at )(.*)(\(.*\))$'
+      comment: stacktrace jboss
+      scope: string.quoted.logMaster
+      captures: 
+        1: control.logMaster
+        2: entity.warn.logMaster
+        3: entity.warn.message.logMaster
+        4: control.logMaster
+    # - match: '^(.*)(WARN)\s*(\[.*\])\s*(.*)$'
+    - match: '^(.*)(WARN)\s*(\[.*\]\s*-)'
+      comment: warn jboss
+      scope: string.quoted.logMaster
+      captures:
+        1: control.logMaster
+        2: entity.warn.logMaster
+        3: entity.warn.logMaster
+        # 4: entity.warn.message.logMaster
+      push:
+        - meta_scope: entity.warn.message.logMaster
+        - match: '$'
+          pop: true
+        - include: class_name
+        - include: xml
+    # - match: '^(.*)(INFO)\s*(\[.*\])\s*(.*)$'
+    - match: '^(.*)(INFO)\s*(\[.*\]\s*-)'
+      comment: info jboss
+      scope: string.quoted.logMaster
+      captures: 
+        1: control.logMaster
+        2: entity.info.logMaster
+        3: entity.info.logMaster
+        # 4: entity.info.message.logMaster
+      push:
+        - meta_scope: entity.info.message.logMaster
+        - match: '$'
+          pop: true
+        - include: class_name
+        - include: xml
+    # - match: '^(.*)(ERROR)\s*(\[.*\])\s*(.*)$'
+    - match: '^(.*)(ERROR)\s*(\[.*\]\s*-)'
+      comment: error jboss
+      scope: string.quoted.logMaster
+      captures:
+        1: control.logMaster
+        2: entity.error.logMaster
+        3: entity.error.logMaster
+        # 4: entity.error.message.logMaster
+      push:
+        - meta_scope: entity.error.message.logMaster
+        - match: '$'
+          pop: true
+        - include: class_name
+        - include: xml
+    # - match: '^(.*)(DEBUG)\s*(\[.*\])\s*(.*)$'
+    - match: '^(.*)(DEBUG)\s*(\[.*\]\s*-)'
+      comment: debug jboss
+      scope: string.quoted.logMaster
+      captures: 
+        1: control.logMaster
+        2: entity.debug.logMaster
+        3: entity.debug.logMaster
+        # 4: entity.debug.message.logMaster
+      push:
+        - meta_scope: entity.debug.message.logMaster
+        - match: '$'
+          pop: true
+        - include: class_name
+        - include: xml
+    # - match:  '^(.*)(TRACE)\s*(\[.*\])\s*(.*)$'
+    - match:  '^(.*)(TRACE)\s*(\[.*\]\s*-)'
+      comment: trace jboss
+      scope: string.quoted.logMaster
+      captures: 
+        1: control.logMaster
+        2: entity.trace.logMaster
+        3: entity.trace.logMaster
+        # 4: entity.trace.message.logMaster
+      push:
+        - meta_scope: entity.trace.message.logMaster
+        - match: '$'
+          pop: true
+        - include: class_name
+        - include: xml
+    # - match: '^(.*)(FATAL)\s*(\[.*\])\s*(.*)$'
+    - match: '^(.*)(FATAL)\s*(\[.*\]\s*-)'
+      comment: fatal jboss
+      scope: string.quoted.logMaster
+      captures:
+        1: control.logMaster
+        2: entity.fatal.logMaster
+        3: entity.fatal.logMaster
+        # 4: entity.fatal.message.logMaster
+      push:
+        - meta_scope: entity.fatal.message.logMaster
+        - match: '$'
+          pop: true
+        - include: class_name
+        - include: xml
+    - include: xml
+    - include: class_name
+  xml:
+    - match: (<\?)
+      scope: punctuation.definition.tag.begin
+      comment: for xml
+      push: Packages/LogMaster/Syntax/XMLog.sublime-syntax
+      with_prototype:
+        - match: (</)(BODY)(>)
+          captures:
+            1: punctuation.definition.tag.begin.xml
+            2: entity.name.tag.localname.xml
+            3: punctuation.definition.tag.end.xml
+          pop: true
+  class_name:
+    - match: '(ds)\w+'
+      scope: support.class
+      comment: class names
+
+  # xml:
+  #   # - meta_scope: punctuation.definition.tag.begin
+  #   - match: xml
+  #     scope: entity.name.tag.xml
+  #     push: Packages/LogMaster/XMLog.sublime-syntax
+  #     with_prototype:
+  #       - match: (</)(BODY)
+  #         captures:
+  #           1: punctuation.definition.tag.begin.xml
+  #           2: entity.name.tag.localname.xml
+  #           3: punctuation.definition.tag.end.xml
+  #         pop: true
+  #   - match: (>)
+  #     scope: punctuation.definition.tag.begin
+  #     pop: true
+
+
+
+
+    # - match: <<<\s*(XML)\s*$\n?
+    #   scope: punctuation.section.embedded.begin punctuation.definition.string
+    #   captures:
+    #     1: keyword.operator.heredoc
+    #   push:
+    #     - meta_scope: meta.embedded.xml
+    #     - meta_content_scope: text.xml
+    #     - match: (?=^XML\b)
+    #       pop: true
+    #     - include: interpolation
+    #     - include: scope:text.xml
+
+
